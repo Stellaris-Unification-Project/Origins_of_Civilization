@@ -1,0 +1,57 @@
+# Triggers when the game starts
+on_game_start = {
+	events = {
+		prim_orig.1 # create starting mechanist and necrophage primitives
+	}
+}
+
+on_game_start_country = {
+	events = {
+		prim_orig.460 # chance of lost colony
+	}
+}
+
+on_survey = {
+	events = {
+		prim_orig_survey.1 # relic
+		prim_orig_survey.2 # lost colony
+		prim_orig_survey.3 # abandoned clone army
+	}
+}
+
+# Triggers country_event for the defender upon defeat
+# This = country, planet owner
+# From = country, attack leader
+# FromFrom = planet
+on_planet_defenders_lose = {
+	events = {
+		prim_orig.55 # necrophage takeover
+		prim_orig.440
+	}
+}
+
+# Triggers country_event for the defender upon victory
+# Root = country, planet owner
+# From = country, attack leader
+# FromFrom = planet
+on_planet_defenders_win = {
+	events = {
+		prim_orig.441
+		prim_orig_integration.40
+	}
+}
+
+on_primitives_enter_space = {
+	events = {
+		prim_orig.210 # UNE
+		prim_orig.400 # chance of lost colony
+	}
+}
+
+# A planet has been colonized.
+# Scope = Planet
+on_colonized = {
+	events = {
+		prim_orig.430
+	}
+}

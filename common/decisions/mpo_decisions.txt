@@ -1,0 +1,38 @@
+##########################################################################
+# Decisions
+##########################################################################
+decision_integrate_colonists = {
+	owned_planets_only = yes
+	enactment_time = 540
+	icon = decision_politics
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 200
+		}
+	}
+
+	potential = {
+		has_deposit = d_alien_colony
+	}
+
+	effect = {
+		remove_deposit = d_alien_colony
+		random_owned_pop = {
+			limit = { has_pop_flag = alien_colonist }
+			remove_pop_flag = alien_colonist
+		}
+		add_district = district_city
+	}
+
+	ai_weight = {
+		weight = 10
+		modifier = {
+			factor = 5
+			free_district_slots < 1
+			free_housing < 1
+		}
+	}
+}
+

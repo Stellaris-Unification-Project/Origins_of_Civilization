@@ -1,0 +1,137 @@
+@distance = 50
+@base_moon_distance = 10
+
+# Primitive Civilizations
+clone_primitives_system = {
+	class = "rl_standard_stars"
+
+	usage = misc_system_init
+	usage_odds = {
+		base = 0.02
+		modifier = {
+			factor = 0
+			OR = {
+				has_humanoids = no
+				not_using_mod_clone_vat_capture = yes
+			}
+		}
+	}
+	primitive_system = yes	# usage odds modified by primitives setup slider
+
+	flags = { primitive_system }
+
+	planet = {
+		count = 1
+		class = star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = { min = 20 max = 30 }
+		has_ring = no
+	}
+
+	change_orbit = 20
+
+	planet = {
+		orbit_distance = 20
+		count = { min = 0 max = 3 }
+	}
+
+	change_orbit = 20
+
+	planet = {
+		count = 1
+		orbit_distance = 0
+		class = "rl_habitable_normal"
+		orbit_angle = { min = 90 max = 270 }
+		size = { min = 12 max = 25 }
+		#deposit_blockers = none
+
+		init_effect = {
+			prevent_anomaly = yes
+			create_species = {
+				name = random
+				class = random_non_machine
+				portrait = random
+				homeworld = THIS
+				traits = {
+					trait = trait_clone_soldier_infertile
+					trait = random_traits
+				}
+			}
+			create_country = {
+				name = random
+				authority = auth_dictatorial
+				civics = {
+					civic = civic_clone_army_protocol
+					civic = civic_unquestioning_obedience
+				}
+				species = last_created_species
+				flag = random
+				origin = origin_clone_army
+				type = abandoned_clone_army
+			}
+			last_created_country = {
+				set_country_flag = abandoned_clone_army
+				create_saved_leader = {
+					creator = this
+					name = "Backup Portrait"
+					key = "clone_army_main_species_generic_portrait"
+					species = owner_main_species
+				}
+				owner_main_species = {
+					change_species_characteristics = {
+						portrait = prev.ruler
+						gender = prev.ruler
+						can_be_modified = no
+						can_change_leader = yes
+					}
+				}
+				give_technology = { tech = tech_cloning message = no }
+				give_technology = { tech = tech_gene_banks message = no}
+			}
+			set_owner = last_created_country
+			set_capital = yes
+
+			while = {
+				count = 26
+				create_pop = {
+					species = last_created_species
+				}
+			}
+			add_building = building_clone_army_clone_vat
+			add_building = building_primitive_farm
+			add_building = building_primitive_factory
+			add_building = building_primitive_mine
+			add_building = building_primitive_power_plant
+			add_building = building_primitive_clone_capital
+			add_building = building_urban_dwellings
+			remove_building = building_colony_shelter
+		}
+
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		orbit_distance = 20
+		count = { min = 1 max = 4 }
+
+		change_orbit = @base_moon_distance
+
+		moon = {
+			count = { min = 0 max = 1 }
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 5
+		}
+	}
+
+	planet = {
+		orbit_distance = 20
+		count = { min = 0 max = 2 }
+	}
+}

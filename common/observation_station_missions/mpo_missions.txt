@@ -1,0 +1,246 @@
+@enlighten_soc_cost = 5
+@enlighten_nrg_cost = 10
+
+# Technological Enlightenment - Stone Age
+give_colonists_infrastructure = {
+	icon = "GFX_fleet_task_technological_enlightenment_action"
+	small_icon = 3
+
+	resources = {
+		category = station_observer_missions
+	}
+
+	monthly_progress = 1
+	completion_event = prim_orig.490
+
+	potential = {
+		FROM = {
+			exists = owner
+			owner = { has_country_flag = mpo_stranded_colonists_1 }
+		}
+		NOR = {
+			has_valid_civic = civic_machine_terminator
+			has_valid_civic = civic_fanatic_purifiers
+			has_valid_civic = civic_hive_devouring_swarm
+		}
+	}
+
+	valid = {
+		has_policy_flag = enlightenment_allowed
+		custom_tooltip = {
+			fail_text = CANNOT_ENLIGHTEN_FANATIC_XENOPHOBE
+			FROM = {
+				exists = owner
+				owner = { NOT = { has_ethic = ethic_fanatic_xenophobe } }
+			}
+		}
+		NOR = {
+			has_valid_civic = civic_fanatic_purifiers
+			has_valid_civic = civic_hive_devouring_swarm
+			has_valid_civic = civic_machine_terminator
+		}
+	}
+
+	ai_weight = {
+		weight = 10
+		modifier = {
+			factor = 0
+			NOT = { has_ai_personality_behaviour = uplifter }
+		}
+	}
+}
+
+# Passive Observation
+passive_observation_clone_army = {
+	icon = "GFX_fleet_task_passive_observation"
+	small_icon = 1
+
+	resources = {
+		category = station_observer_missions
+		produces = {
+			society_research = 8
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+				}
+				OR = {
+					is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+				}
+			}
+			society_research = 4
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+				}
+
+				OR = {
+					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
+					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
+					is_active_resolution = "resolution_commerce_profit_maximization_engines"
+				}
+			}
+			alloys = 2
+		}
+	}
+
+    potential = {
+        FROM = {
+            exists = owner
+            owner = { is_country_type = abandoned_clone_army }
+        }
+    }
+
+	ai_weight = {
+		weight = 1
+	}
+}
+
+# Specimen Collection AKA "Aggressive Observation"
+specimen_collection_clone_army = {
+	icon = "GFX_fleet_task_specimen_collection"
+	small_icon = 2
+
+	resources = {
+		category = station_observer_missions
+		produces = {
+			society_research = 10
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+				}
+				OR = {
+					is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+				}
+			}
+			society_research = 6
+		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_galactic_community_member = yes
+				}
+
+				OR = {
+					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
+					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
+					is_active_resolution = "resolution_commerce_profit_maximization_engines"
+				}
+			}
+			alloys = 8
+		}
+	}
+
+	potential = {
+        FROM = {
+            exists = owner
+            owner = { is_country_type = abandoned_clone_army }
+        }
+    }
+
+	valid = {
+		OR = {
+			has_policy_flag = interference_active
+			has_policy_flag = interference_full
+		}
+		custom_tooltip = {
+			fail_text = VBP_CANT_ABDUCT_FROM_HABITAT
+			NOT = {
+				from.owner = { has_country_flag = vbp_voidbound_civilisation }
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 5	# Use if policy allows it
+	}
+}
+
+# Covert Infiltration
+appropriate_clone_army = {
+	icon = "GFX_fleet_task_covert_infiltration_action"
+	small_icon = 4
+	
+	resources = {
+		category = station_observer_missions
+		upkeep = {
+			society_research = @enlighten_soc_cost
+			energy = @enlighten_nrg_cost
+		}
+		produces = {
+			trigger = {
+				owner = {
+					is_galactic_community_member = yes
+				}
+
+				OR = {
+					is_active_resolution = "resolution_commerce_underdeveloped_system_utilization"
+					is_active_resolution = "resolution_commerce_holistic_asset_coordination"
+					is_active_resolution = "resolution_commerce_profit_maximization_engines"
+				}
+			}
+			alloys = 4
+		}
+	}
+
+	monthly_progress = 0.04
+	completion_event = prim_orig.510
+
+	potential = {
+		NOT = { has_valid_civic = civic_inwards_perfection }
+        FROM = {
+            exists = owner
+            owner = {
+				is_country_type = abandoned_clone_army
+			}
+        }
+	}
+
+	valid = {
+		has_technology = tech_gene_tailoring
+		OR = {
+			has_policy_flag = interference_active
+			has_policy_flag = interference_full
+		}
+		FROM = {
+			exists = owner
+			owner = {
+				is_country_type = abandoned_clone_army
+			}
+		}
+		NOR = {
+			has_valid_civic = civic_fanatic_purifiers
+			has_valid_civic = civic_hive_devouring_swarm
+			has_valid_civic = civic_machine_terminator
+		}
+	}
+	
+	ai_weight = {
+		weight = 10
+		modifier = {
+			factor = 0
+			NOR = {
+				has_ai_personality_behaviour = infiltrator
+				has_ai_personality_behaviour = uplifter
+			}
+		}
+		modifier = {
+			factor = 0
+			resource_stockpile_compare = { resource = energy value < 1000 }
+		}
+	}
+}
+

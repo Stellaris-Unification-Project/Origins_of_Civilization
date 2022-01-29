@@ -1,0 +1,274 @@
+namespace = vbp_machine
+
+#########################
+#Natural  outcome  block#
+#########################
+
+#Space age
+country_event = {
+	id = vbp_machine.200
+	
+	hide_window = yes
+	is_triggered_only = yes
+		
+	immediate = {
+		remove_country_flag = vbp_primitive_robots
+		set_country_flag = primitives_can_into_space
+		set_country_type = default
+		IF = {
+			limit = {
+				has_civic = civic_machine_servitor
+			}
+			change_government = {
+				civics = {
+					civic = civic_machine_servitor
+					civic = random
+				}
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				has_civic = civic_machine_assimilator
+			}
+			change_government = {
+				civics = {
+					civic = civic_machine_assimilator
+					civic = random
+				}
+			}
+		}
+		ELSE_IF = {
+            limit = { 
+                OR = {
+					AND = {
+						has_more_default_origins = yes
+						has_origin = origin_self_defence_protocol
+					}
+                    AND = {
+                        has_country_flag = vbp_machine_angered 
+                        NOT = { exists = from } 
+                    }
+                    AND = {
+                        exists = FROM
+                        FROM = { has_civic = civic_machine_terminator }
+                    }
+                }
+            }
+            change_government = {
+                civics = {
+                    civic = civic_machine_terminator
+                    civic = random
+                }
+            }
+        }
+        ELSE = {
+            change_government = {
+                civics = random
+            }
+            while = { #Reroll civics terminator vassals not allowed
+                limit = {
+                    exists = from
+                    FROM = { NOT = { has_civic = civic_machine_terminator } }
+                    has_civic = civic_machine_terminator
+                }
+                change_government = {
+                    civics = random
+                }
+            }
+        }
+		change_country_flag = random
+		add_resource = {
+			energy = 500
+			minerals = 1000 # enough for a spaceport and then some
+			influence = 300
+        }
+		remove_country_flag = day_0
+
+		if = {
+			limit = {
+				capital_scope = { is_planet_class = pc_ringworld_habitable } 
+			}
+			# hope you find some mineral deposits out in the void. Here's an extra subsidy to tide you over until the resource shortages cripple you.
+			add_resource = {
+				energy = 1000
+				alloys = 1000
+				volatile_motes = 500
+				exotic_gases = 500
+				rare_crystals = 500
+			}
+		}
+		
+		capital_scope = {
+			if = {
+				limit = {
+					exists = observation_outpost
+				}
+				observation_outpost.owner = {
+					country_event = { id = vbp_machine.201 }
+					save_event_target_as = observation_outpost_owner
+				}
+				observation_outpost = { dismantle = yes }
+			}
+			while = {
+				limit = { 
+					num_pops < 8
+					#free_housing > 0
+				}
+				create_pop = {
+					species = owner
+				}
+			}
+
+            remove_building = bulding_vbp_sentience_complex
+			remove_building = building_vbp_strip_mines
+			remove_building = building_vbp_industrial_zone
+			remove_building = building_vbp_storage
+			remove_building = building_vbp_power_grid
+			remove_building = building_mpo_machine_factories
+			remove_building = building_mpo_machine_farms
+			remove_building = building_primitive_organic_sanctuary
+			
+			if = {
+				limit = { is_planet_class = pc_ringworld_habitable }
+				change_pc = pc_shattered_ring_habitable
+			}
+			generate_space_age_buildings_and_districts = yes
+
+
+			remove_all_armies = yes
+			solar_system = {
+				if = {
+					limit = {
+						NOT = { exists = starbase }
+					}
+					create_starbase = {
+						size = starbase_outpost
+						owner = root
+					}
+				}
+				else_if = {
+					limit = {
+						starbase = {
+							NOT = { owner = { is_same_value = root } }
+						}								
+					}	
+					starbase = {
+						owner = { country_event = { id = primitive.180 days = 10 } }
+					}								
+				}
+			}
+		}
+
+		IF = {
+			limit = { has_country_flag = mpo_primitive_contact_sender }
+			remove_country_flag = mpo_primitive_contact_sender
+			random_list = {
+				# common ground
+				50 = {
+					every_country = {
+						limit = {
+							has_country_flag = mpo_primitive_contact@prev
+						}
+						remove_country_flag = mpo_primitive_contact@prev
+						add_opinion_modifier = {
+							who = prev
+							modifier = opinion_common_ground
+						}
+						IF = {
+							limit = {
+								OR = {
+									is_country_type = primitive
+									is_country_type = vbp_hive
+									is_country_type = vbp_machine
+								}	
+							}
+							set_timed_country_flag = { flag = mpo_common_ground_advance days = 2 }
+							country_event = { id = prim_orig.5 }
+						}
+						ELSE = {
+							join_alliance = { who = root override_requirements = yes }
+							IF = {
+								limit = {
+									NOT = { has_country_flag = mpo_common_ground_advance }
+								}
+								set_federation_leader = this
+								add_tradition = tr_diplomacy_adopt
+								add_tradition = tr_diplomacy_the_federation
+							}
+						}
+					}
+					modifier = {
+						factor = 0
+						has_country_flag = mpo_hegemon_advance
+					}
+				}
+				# hegemon
+				50 = {
+					IF = {
+						limit = { has_origin = origin_common_ground }
+						set_origin = origin_hegemon
+					}
+					every_country = {
+						limit = {
+							has_country_flag = mpo_primitive_contact@prev
+						}
+						remove_country_flag = mpo_primitive_contact@prev
+						IF = {
+							limit = {
+								OR = {
+									is_country_type = primitive
+									is_country_type = vbp_hive
+									is_country_type = vbp_machine
+								}	
+							}
+							set_timed_country_flag = { flag = mpo_hegemon_advance days = 2 }
+							country_event = { id = prim_orig.5 }
+						}
+						ELSE = {
+							join_alliance = { who = root override_requirements = yes }
+							IF = {
+								limit = {
+									NOT = { has_country_flag = mpo_hegemon_advance }
+								}
+								set_federation_leader = this
+								add_tradition = tr_diplomacy_adopt
+								add_tradition = tr_diplomacy_the_federation
+								federation = {
+									set_federation_type = hegemony_federation
+									set_name = random
+									set_federation_law = succession_term_years_20
+								}
+							}
+						}
+					}
+					modifier = {
+						factor = 0
+						OR = {
+							has_country_flag = mpo_common_ground_advance
+							AND = {
+								is_egalitarian = yes
+								NOT = { has_country_flag = mpo_hegemon_advance 	}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		IF = {
+			limit = { exists = event_target:observation_outpost_owner }
+			fire_on_action = {
+				on_action = on_primitives_enter_space
+				scopes = {
+					from = event_target:observation_outpost_owner
+				}
+			}
+		}
+		ELSE = {
+			set_country_flag = entered_space_unobserved
+			fire_on_action = {
+				on_action = on_primitives_enter_space
+			}
+		}
+	}
+}

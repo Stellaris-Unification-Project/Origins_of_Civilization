@@ -1,0 +1,2904 @@
+
+# Given a species, create a mod with trait_survivor and apply to all pops, leaders
+# and armies that have the original species and the same owner as the scope object.
+# Scope: Something that has a species and an owner
+create_survivor_species_mod = {
+	species = {
+		create_species = {
+			is_mod = yes
+			name = this
+			plural = this
+			class = this
+			portrait = this
+			traits = this
+			homeworld = this
+			traits = {
+				ideal_planet_class = this.home_planet
+				trait = trait_survivor
+			}
+		}
+		save_event_target_as = changing_species
+	}
+
+	owner = {
+		every_owned_pop = {
+			limit = { is_exact_same_species = event_target:changing_species }
+			change_species = last_created_species
+		}
+		every_owned_leader = {
+			limit = { is_exact_same_species = event_target:changing_species }
+			change_species = last_created_species
+		}
+		every_pool_leader = {
+			limit = { is_exact_same_species = event_target:changing_species }
+			change_species = last_created_species
+		}
+		every_owned_army = {
+			limit = {
+				exists = species
+				is_exact_same_species = event_target:changing_species
+			}
+			change_species = last_created_species
+		}
+		every_owned_ship = {
+			limit = {
+				is_ship_class = shipclass_colonizer
+				is_exact_same_species = event_target:changing_species
+			}
+			change_species = last_created_species
+		}
+	}
+}
+
+create_survivor_necroids = {
+	species = {
+		save_event_target_as = changing_species
+		switch = {
+			trigger = is_species_class
+			HUM = {
+				random_list = {
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec1
+							traits = this
+							homeworld = this
+						}				
+					}
+					7 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec2
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec5
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec7
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec8
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec11
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec13
+							traits = this
+							homeworld = this
+						}				
+					}
+				}
+			}
+			MAM = {
+				random_list = {
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec6
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec7
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec8
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec10
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec14
+							traits = this
+							homeworld = this
+						}				
+					}
+				}
+			}
+			AVI = {
+				random_list = {
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec7
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec8
+							traits = this
+							homeworld = this
+						}				
+					}
+				}
+			}
+			REP = {
+				random_list = {
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec6
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec7
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec8
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec4
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec15
+							traits = this
+							homeworld = this
+						}				
+					}
+				}
+			}
+			ART = {
+				random_list = {
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec6
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec7
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec8
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec3
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec4
+							traits = this
+							homeworld = this
+						}				
+					}
+					7 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec9
+							traits = this
+							homeworld = this
+						}				
+					}
+				}
+			}
+			MOL = {
+				random_list = {
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec6
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec7
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec8
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec4
+							traits = this
+							homeworld = this
+						}				
+					}
+				}
+			}
+			FUN = {
+				random_list = {
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec6
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec7
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec8
+							traits = this
+							homeworld = this
+						}				
+					}
+					1 = {
+						create_species = {
+							name = this
+							class = "NECROID"
+							portrait = nec4
+							traits = this
+							homeworld = this
+						}				
+					}
+				}
+			}
+			AQUATIC = {
+				create_species = {
+					name = this
+					class = "NECROID"
+					portrait = nec9
+					traits = this
+					homeworld = this
+				}
+			}
+		}
+	}
+	last_created_species = {
+		change_species_characteristics = {
+			add_trait = trait_survivor
+		}
+	}
+	change_species = last_created_species
+
+	owner = {
+		every_owned_pop = {
+			limit = { is_exact_same_species = event_target:changing_species }
+			change_species = last_created_species
+		}
+		every_owned_leader = {
+			limit = { is_exact_same_species = event_target:changing_species }
+			change_species = last_created_species
+		}
+		every_pool_leader = {
+			limit = { is_exact_same_species = event_target:changing_species }
+			change_species = last_created_species
+		}
+		every_owned_army = {
+			limit = {
+				exists = species
+				is_exact_same_species = event_target:changing_species
+			}
+			change_species = last_created_species
+		}
+		every_owned_ship = {
+			limit = {
+				is_ship_class = shipclass_colonizer
+				is_exact_same_species = event_target:changing_species
+			}
+			change_species = last_created_species
+		}
+	}
+}
+
+create_necrophage_species = {
+	switch = {
+		trigger = is_species_class
+		HUM = {
+			random_list = {
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol4
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol11
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol12
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol5
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				2 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun4
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				2 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun16
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+					modifier = {
+						factor = 0
+						NOR = {
+							host_has_dlc = "Creatures of the Void Portrait Pack"
+							host_has_dlc = "Anniversary Portraits"
+						}
+					}
+				}
+				2 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = fun8
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec6
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec13
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				7 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec1
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				7 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec11
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		MAM = {
+			random_list = {
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol4
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol11
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol12
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol5
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				2 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun4
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				2 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun16
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+					modifier = {
+						factor = 0
+						NOR = {
+							host_has_dlc = "Creatures of the Void Portrait Pack"
+							host_has_dlc = "Anniversary Portraits"
+						}
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = fun8
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec6
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec13
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				7 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec10
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				7 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec14
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		REP = {
+			random_list = {
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol4
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol11
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol12
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol5
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				3 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun4
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				3 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun16
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+					modifier = {
+						factor = 0
+						NOR = {
+							host_has_dlc = "Creatures of the Void Portrait Pack"
+							host_has_dlc = "Anniversary Portraits"
+						}
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec6
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec13
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				7 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec15
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		AVI = {
+			random_list = {
+				1 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun6
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec6
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		ART = {
+			random_list = {
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec6
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				7 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec3
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		MOL = {
+			random_list = {
+				7 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol2
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				2 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun9
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				7 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec6
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		PLANT = {
+			random_list = {
+				1 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun10
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "PLANT"
+						portrait = pla12
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		LITHOID = {
+			create_species = {
+				name = random
+				class = "LITHOID"
+				portrait = random
+				traits = {
+					trait = trait_necrophage
+					trait = trait_lithoid
+					trait = random_traits
+				}
+				homeworld = event_target:necrophage_planet
+			}
+		}
+		AQUATIC = {
+			random_list = {
+				1 = {
+					create_species = {
+						name = random
+						class = NECROID
+						portrait = random
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = AQUATIC
+						portrait = random
+						traits = {
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		default = {
+			create_species = {
+				name = random
+				class = this
+				portrait = random
+				traits = {
+					trait = trait_necrophage
+					trait = random_traits
+				}
+				homeworld = event_target:necrophage_planet
+			}
+		}
+	}
+}
+
+create_hive_necrophage_species = {
+	switch = {
+		trigger = is_species_class
+		HUM = {
+			random_list = {
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol4
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol11
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol12
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol5
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				2 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun4
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				2 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun16
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+					modifier = {
+						factor = 0
+						NOR = {
+							host_has_dlc = "Creatures of the Void Portrait Pack"
+							host_has_dlc = "Anniversary Portraits"
+						}
+					}
+				}
+				2 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = fun8
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec6
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec13
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				7 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec1
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				7 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec11
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		MAM = {
+			random_list = {
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol4
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol11
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol12
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol5
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				2 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun4
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				2 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun16
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+					modifier = {
+						factor = 0
+						NOR = {
+							host_has_dlc = "Creatures of the Void Portrait Pack"
+							host_has_dlc = "Anniversary Portraits"
+						}
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = fun8
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec6
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec13
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				7 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec10
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				7 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec14
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		REP = {
+			random_list = {
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol4
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol11
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol12
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol5
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				3 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun4
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				3 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun16
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+					modifier = {
+						factor = 0
+						NOR = {
+							host_has_dlc = "Creatures of the Void Portrait Pack"
+							host_has_dlc = "Anniversary Portraits"
+						}
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec6
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec13
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				7 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec15
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		AVI = {
+			random_list = {
+				1 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun6
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec6
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		ART = {
+			random_list = {
+				1 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec6
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				7 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec3
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		MOL = {
+			random_list = {
+				7 = {
+					create_species = {
+						name = random
+						class = "MOL"
+						portrait = mol2
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				2 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun9
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				7 = {
+					create_species = {
+						name = random
+						class = "NECROID"
+						portrait = nec6
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		PLANT = {
+			random_list = {
+				1 = {
+					create_species = {
+						name = random
+						class = "FUN"
+						portrait = fun10
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = "PLANT"
+						portrait = pla12
+						traits = {
+							trait = trait_hive_mind
+							trait = trait_necrophage
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		LITHOID = {
+			create_species = {
+				name = random
+				class = "LITHOID"
+				portrait = random
+				traits = {
+					trait = trait_hive_mind
+					trait = trait_necrophage
+					trait = trait_lithoid
+					trait = random_traits
+				}
+				homeworld = event_target:necrophage_planet
+			}
+		}
+		AQUATIC = {
+			random_list = {
+				1 = {
+					create_species = {
+						name = random
+						class = NECROID
+						portrait = random
+						traits = {
+							trait = trait_necrophage
+							trait = trait_hive_mind
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+				1 = {
+					create_species = {
+						name = random
+						class = AQUATIC
+						portrait = random
+						traits = {
+							trait = trait_necrophage
+							trait = trait_hive_mind
+							trait = random_traits
+						}
+						homeworld = event_target:necrophage_planet
+					}
+				}
+			}
+		}
+		default = {
+			create_species = {
+				name = random
+				class = random_non_machine
+				portrait = random
+				traits = {
+					trait = trait_hive_mind
+					trait = trait_necrophage
+					trait = random_traits
+				}
+				homeworld = event_target:necrophage_planet
+			}
+		}
+	}
+}
+
+
+primitive_ethic_shift_effect = {
+	shift_ethic = ethic_$ethic$
+	while = {
+		limit = {
+			OR = {
+				AND = {
+					has_ethic = ethic_fanatic_$ethic$
+					pop_percentage = {
+						percentage < 0.5
+						limit = { pop_has_ethic = ethic_$ethic$ }
+					}	
+				}
+				pop_percentage = {
+					percentage < 0.25
+					limit = { pop_has_ethic = ethic_$ethic$ }
+				}	
+			}
+		}
+		random_owned_pop = {
+			limit = {
+				NOT = { pop_has_ethic = ethic_$ethic$ }
+			}
+			pop_change_ethic = ethic_$ethic$
+		}
+	}
+	[[notification_event]
+	capital_scope = {
+		IF = {
+			limit = { has_observation_outpost = yes }
+			observation_outpost_owner = {
+				country_event = { id = $notification_event$ }
+			}
+		}
+	}
+	]
+}
+
+create_machine_primitives_on_planet = {
+	vbp_create_machine_species = yes
+	vbp_create_machine_country = yes
+	last_created_country = { vbp_randomize_machine_flag = yes }
+	vbp_setup_machine_world = yes
+}
+
+create_machine_servitor_primitives_on_planet = {
+	vbp_create_machine_species = yes
+	mpo_create_machine_servitor_country = yes
+	last_created_country = {
+		set_country_flag = vbp_primitive_robots
+		set_country_flag = day_0
+		set_primitive_age = vbp_primitive_robots
+		vbp_randomize_machine_flag = yes
+	}
+	create_species = {
+		name = random
+		class = random_non_machine
+		portrait = random
+		homeworld = this
+		traits = random
+	}
+	last_created_species = {
+		set_species_flag = secondary_species@prev.owner
+	}
+	while = {
+		limit = {
+			num_pops < 4
+		}
+		create_pop = {
+			species = last_created_species
+		}
+	}
+	vbp_setup_machine_world = yes
+	add_building = building_mpo_machine_farms
+	add_building = building_mpo_machine_factories
+	add_building = building_organic_sanctuary
+	add_deposit = d_unsupervised_settlement
+}
+
+create_machine_assimilator_primitives_on_planet = {
+	vbp_create_machine_species = yes
+	mpo_create_machine_assimilator_country = yes
+	last_created_country = {
+		set_country_flag = vbp_primitive_robots
+		set_country_flag = day_0
+		set_primitive_age = vbp_primitive_robots
+		vbp_randomize_machine_flag = yes
+	}
+	create_species = {
+		name = random
+		class = random_non_machine
+		portrait = random
+		homeworld = this
+		traits = random
+	}
+	while = {
+		count = 10
+		create_pop = {
+			species = last_created_species
+			ethos = random
+		}
+		last_created_pop = {
+			clear_ethos = yes
+		}
+	}
+	vbp_setup_machine_world = yes
+	add_deposit = d_assimilators_ruins
+	add_building = building_mpo_machine_farms
+}
+
+mpo_create_machine_servitor_country = {
+	create_country = {
+		name = random
+		species = last_created_species
+		ethos = {
+			ethic = ethic_gestalt_consciousness
+		}
+		authority = auth_machine_intelligence
+		civics = {
+			civic = vbp_machine_civic_one
+			civic = civic_machine_servitor
+		}
+		origin = origin_enlightened
+		flag = random
+		type = vbp_machine
+	}
+}
+
+mpo_create_machine_assimilator_country = {
+	create_country = {
+		name = random
+		species = last_created_species
+		ethos = {
+			ethic = ethic_gestalt_consciousness
+		}
+		authority = auth_machine_intelligence
+		civics = {
+			civic = vbp_machine_civic_one
+			civic = civic_machine_assimilator
+		}
+		origin = origin_enlightened
+		flag = random
+		type = vbp_machine
+	}
+}
+
+primitive_seti_effect = {
+	set_country_flag = mpo_primitive_contact_sender
+	IF = {
+		limit = {
+			NOT = { has_country_flag = mpo_primitive_contact@$receiver$ }
+		}
+		set_country_flag = mpo_primitive_contact@$receiver$
+		set_timed_country_flag = {
+			flag = mpo_delay_contact@$receiver$
+			days = $delay$
+		}
+	}
+	switch = {
+		trigger = has_country_flag
+		atomic_age = {
+			IF = {
+				limit = {
+					$receiver$ = {
+						NOR = {
+							has_country_flag = atomic_age
+							has_country_flag = early_space_age
+							has_country_flag = vbp_hive_superego_stage
+							has_country_flag = vbp_primitive_robots
+						}
+					}
+				}
+				save_event_target_as = primitive_advancement_sender
+				$receiver$ = {
+					country_event = {
+						id = prim_orig.61
+						days = $delay$
+					}
+				}
+			}
+		}
+		early_space_age = {
+			IF = {
+				limit = {
+					$receiver$ = {
+						NOR = {
+							has_country_flag = early_space_age
+							has_country_flag = vbp_hive_superego_stage
+							has_country_flag = vbp_primitive_robots
+						}
+					}
+				}
+				save_event_target_as = primitive_advancement_sender
+				$receiver$ = {
+					country_event = {
+						id = prim_orig.62
+						days = $delay$
+					}
+				}
+			}
+		}
+		vbp_primitive_robots = {
+			IF = {
+				limit = {
+					$receiver$ = {
+						NOR = {
+							has_country_flag = early_space_age
+							has_country_flag = vbp_hive_superego_stage
+							has_country_flag = vbp_primitive_robots
+						}
+					}
+				}
+				save_event_target_as = primitive_advancement_sender
+				$receiver$ = {
+					country_event = {
+						id = prim_orig.62
+						days = $delay$
+					}
+				}
+			}
+		}
+	}
+}
+
+generate_random_variable_value = {
+	set_variable = {
+		which = $variable$
+		value = 0.0
+	}
+	while = {
+		count = $digits|1$
+		random_list = {
+			1 = { change_variable = { which = $variable$ value = 0.0 } }
+			1 = { change_variable = { which = $variable$ value = 0.1 } }
+			1 = { change_variable = { which = $variable$ value = 0.2 } }
+			1 = { change_variable = { which = $variable$ value = 0.3 } }
+			1 = { change_variable = { which = $variable$ value = 0.4 } }
+			1 = { change_variable = { which = $variable$ value = 0.5 } }
+			1 = { change_variable = { which = $variable$ value = 0.6 } }
+			1 = { change_variable = { which = $variable$ value = 0.7 } }
+			1 = { change_variable = { which = $variable$ value = 0.8 } }
+			1 = { change_variable = { which = $variable$ value = 0.9 } }
+		}
+		multiply_variable = {
+			which = $variable$ value = 10
+		}
+	}
+}
+
+create_newly_lost_colony_country = {
+	create_country = {
+		name = random
+		authority = random
+		civics = random
+		species = event_target:lost_colony_species
+		ethos = random
+		flag = random
+		origin = origin_lost_colony
+		type = mpo_lost_spacefarers
+		ignore_initial_colony_error = yes
+	}
+	last_created_country = {
+		set_graphical_culture = preindustrial_01
+		set_country_flag = mpo_stranded_colonists_1
+		IF = {
+			limit = { has_global_flag = dtraits_randomization_flag }
+			weight_ethos_by_traits = yes
+			weight_authority_by_traits = yes
+			post_ethos_weighting_cleanup = yes
+			adjust_traits_for_ethics = yes
+			set_global_flag = need_to_do_something_besides_scripted_effects
+		}
+		event_target:lost_colony_parent = {
+			set_country_flag = lost_colony_parent@prev
+			switch = {
+				trigger = has_origin
+				origin_necrophage = {
+					prev = { set_origin = origin_necrophage }
+				}
+				origin_tree_of_life = {
+					prev = { set_origin = origin_tree_of_life }
+				}
+				origin_lithoid = {
+					prev = { set_origin = origin_lithoid }
+				}
+			}
+		}
+	}
+}
+
+setup_newly_lost_colony_planet = {
+	set_capital = yes
+	create_pop = {
+		species = owner
+	}
+	add_building = building_primitive_colony_shelter
+	remove_building = building_colony_shelter
+	IF = {
+		limit = {
+			owner = { has_origin = origin_tree_of_life }
+		}
+		planet_event = { id = origin.3001 }
+	}
+	owner = {
+		set_country_type = primitive
+		set_primitive_age = mpo_stranded_colonists_1
+		country_event = {
+			id = prim_orig.450
+			days = 3600
+		}
+	}
+}
+upgrade_primitive_lost_colony = {
+	remove_country_flag = mpo_stranded_colonists_1
+	set_country_flag = mpo_stranded_colonists_2
+	set_primitive_age = mpo_stranded_colonists_2
+	capital_scope = {
+		add_building = building_primitive_mine
+		add_building = building_primitive_power_plant
+		add_building = building_primitive_farm
+		add_building = building_primitive_factory
+		add_building = building_primitive_dwellings
+		add_building = building_primitive_colony_capital
+		remove_building = building_primitive_colony_shelter
+		while = {
+			limit = { num_pops < 10 }
+			create_pop = {
+				species = owner
+			}
+		}
+	}
+}
+
+generate_space_age_buildings_and_districts = {
+	if = {
+		limit = {
+			owner = {
+				any_owned_species = {
+					is_lithoid = yes
+					NOT = {
+						is_same_species = prev
+					}
+				}
+			}
+		}
+		owner = {
+			set_country_flag = lithoid_subspecies
+		}
+	}
+
+	if = {
+		limit = {
+			owner = {
+				any_owned_species = {
+					is_lithoid = no
+					NOT = {
+						is_same_species = prev
+					}
+				}
+			}
+		}
+		owner = {
+			set_country_flag = non_lithoid_subspecies
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = {
+				is_planet_class = pc_shattered_ring_habitable
+			}
+		}
+
+		if = {
+			limit = {
+				owner = {
+					has_origin = origin_tree_of_life
+					is_lithoid_empire = yes
+				}
+			}
+			owner = {
+				set_country_flag = non_lithoid_subspecies
+			}
+		}
+
+		if = {
+			limit = { owner = { is_regular_empire = yes } }
+
+			# total - 24 jobs
+
+			# 3 jobs
+			add_district = {
+				district_type = district_city
+			}
+
+			if = {
+				limit = {
+					owner = { NOT = { has_valid_civic = civic_agrarian_idyll } }
+				}
+				while = {
+					count = 2
+					add_district = {
+						district_type = district_city
+					}
+				}
+			}
+			else = {
+				while = {
+					count = 2 
+					add_district = {
+						district_type = district_farming
+					}
+				}
+			}
+
+			if = {
+				limit = { owner = { is_megacorp = yes } }
+				add_district = {
+					district_type = district_city
+				}
+			}
+
+			# 4 - 6 jobs
+			if = {
+				limit = {
+					owner = {
+						OR = {
+							is_lithoid_empire = no
+							has_country_flag = non_lithoid_subspecies
+						}
+					}
+				}
+				while = {
+					count = 2
+					add_district = {
+						district_type = district_farming
+					}
+				}
+				if = {
+					limit = {
+						owner = { has_origin = origin_default }
+					}
+					add_district = {
+						district_type = district_farming
+					}
+				}
+			}
+			else = {
+				while = {
+					count = 2
+					add_district = {
+						district_type = district_mining
+					}
+				}
+				if = {
+					limit = {
+						owner = { has_origin = origin_default }
+					}
+					add_district = {
+						district_type = district_mining
+					}
+				}
+			}
+
+			# 4 jobs
+			while = {
+				count = 2
+				add_district = {
+					district_type = district_mining
+				}
+			}
+
+			# 2 jobs
+			add_district = {
+				district_type = district_generator
+			}
+
+			# 4 jobs
+			while = {
+				count = 2
+				add_district = {
+					district_type = district_industrial
+				}
+			}
+
+			# 2 jobs
+			if = {
+				limit = { owner = { is_megacorp = no } }
+				add_district = {
+					district_type = district_generator
+				}
+			}
+
+			# 2 jobs
+			if = {
+				limit = {
+					owner = { has_origin = origin_default }
+				}
+				add_district = {
+					district_type = district_generator
+				}
+			}
+
+			# 3 jobs
+			add_building = building_capital
+
+			# 2 jobs
+			add_building = building_bureaucratic_1
+
+			# 2 jobs
+			if = {
+				limit = {
+					owner = {
+						has_valid_civic = civic_reanimated_armies
+					}
+				}
+				add_building = building_dread_encampment
+			}
+			else = {
+				add_building = building_research_lab_1
+			}
+
+			# 4-5 jobs
+			if = {
+				limit = {
+					owner = {
+						NOT = { has_valid_civic = civic_agrarian_idyll }
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							is_spiritualist = no
+							has_valid_civic = civic_pleasure_seekers
+						}
+					}
+					add_building = building_holo_theatres
+					add_district = {
+						district_type = district_industrial
+					}
+				}
+				else_if = {
+					limit = {
+						owner = {
+							is_spiritualist = yes
+							has_valid_civic = civic_death_cult
+						}
+					}
+					add_building = building_sacrificial_temple_1
+					add_district = {
+						district_type = district_industrial
+					}
+				}
+				else_if = {
+					limit = {
+						owner = {
+							is_megacorp = no
+							is_spiritualist = yes
+						}
+					}
+					add_building = building_temple
+					add_district = {
+						district_type = district_industrial
+					}
+				}
+				else = {
+					add_building = building_commercial_zone
+				}
+			}
+		}
+		
+		if = {
+			limit = { owner = { is_hive_empire = yes } }
+
+			# 9 jobs
+			while = {
+				count = 3
+				add_district = {
+					district_type = district_hive
+				}
+			}
+
+			# 6-9 jobs
+			if = {
+				limit = { owner = { is_lithoid_empire = no } }
+				while = {
+					count = 2
+					add_district = {
+						district_type = district_farming
+					}
+				}
+				if = {
+					limit = {
+						owner = { has_origin = origin_default }
+					}
+					add_district = {
+						district_type = district_farming
+					}
+				}
+			}
+			else = {
+				while = {
+					count = 2
+					add_district = {
+						district_type = district_mining
+					}
+				}
+				if = {
+					limit = {
+						owner = { has_origin = origin_default }
+					}
+					add_district = {
+						district_type = district_mining
+					}
+				}
+			}
+
+			# 6 jobs
+			while = {
+				count = 2
+				add_district = {
+					district_type = district_mining
+				}
+			}
+
+			if = {
+				limit = {
+					owner = { has_origin = origin_tree_of_life }
+				}
+				remove_district = district_mining
+				add_district = {
+					district_type = district_farming
+				}
+			}
+
+			# 6 jobs
+			while = {
+				count = 2
+				add_district = {
+					district_type = district_generator
+				}
+			}
+
+			# 3 jobs
+			if = {
+				limit = {
+					owner = { has_origin = origin_default }
+				}
+				add_district = {
+					district_type = district_generator
+				}
+			}
+
+			# 2 jobs
+			add_district = {
+				district_type = district_industrial
+			}
+
+			# 5 jobs
+			add_building = building_hive_capital
+
+			# 2 jobs
+			add_building = building_research_lab_1
+
+			if = {
+				limit = { #Necrophages need fewer complex drones or the menial drone slots won't be filled
+					NOT = { owner = { has_origin = origin_necrophage } }
+				}
+				# 2 jobs
+				add_building = building_hive_node
+			}
+			if = { #This building is very useless for Devouring Swarm Necrophages
+				limit = {
+					NOT = {
+						owner = {
+							has_origin = origin_necrophage
+							has_valid_civic = civic_hive_devouring_swarm
+						}
+					}
+				}
+				# 1 job
+				add_building = building_spawning_pool
+			}
+		}
+
+		# Replace capital building for machine empires
+		if = {
+			limit = { owner = { is_machine_empire = yes } }
+
+			# total - 27 jobs
+
+			# 3 jobs
+			while = {
+				count = 2
+				add_district = {
+					district_type = district_nexus
+				}
+			}
+
+			# 2 jobs
+			add_district = {
+				district_type = district_industrial
+			}
+
+			# 6 jobs
+			add_building = building_machine_capital
+
+			# 1 job
+			add_building = building_machine_assembly_plant
+
+			# 2 job
+			add_building = building_uplink_node
+
+			# 2 jobs
+			add_building = building_research_lab_1
+
+			if = {
+				limit = { owner = { NOT = { has_origin = origin_machine } } }
+
+				# 4 jobs
+				add_district = {
+					district_type = district_mining
+				}
+
+				# 2 jobs
+				if = {
+					limit = {
+						owner = { has_origin = origin_default }
+					}
+					add_district = {
+						district_type = district_mining
+					}
+				}
+
+				# 8 jobs
+				while = {
+					count = 4
+					add_district = {
+						district_type = district_generator
+					}
+				}
+
+				# 2 jobs
+				if = {
+					limit = {
+						owner = { has_origin = origin_default }
+					}
+					add_district = {
+						district_type = district_generator
+					}
+				}
+
+				#Assimilators
+				if = {
+					limit = { owner = { has_civic = civic_machine_assimilator } }
+					remove_district = district_generator
+
+					if = {
+						limit = { owner = { has_country_flag = lithoid_subspecies } }
+						add_district = {
+							district_type = district_mining
+						}
+					}
+					else = {
+						add_district = {
+							district_type = district_farming
+						}
+					}
+				}
+
+				#Servitors
+				if = {
+					limit = { owner = { has_civic = civic_machine_servitor } }
+
+					if = {
+						limit = { owner = { has_country_flag = lithoid_subspecies } }
+						add_district = {
+							district_type = district_mining
+						}
+					}
+					else = {
+						add_district = {
+							district_type = district_farming
+						}
+					}
+
+					add_district = {
+						district_type = district_nexus
+					}
+					add_building = building_organic_sanctuary
+				}
+			}
+		}
+		# Replace a mining district with a farming district for lithoid empires with an organic secondary species that use food for alloy production
+		if = {
+			limit = {
+				owner = {
+					is_lithoid_empire = yes
+					has_country_flag = non_lithoid_subspecies
+					is_catalytic_empire = yes
+				}
+			}
+			remove_district = district_mining
+			add_district = {
+				district_type = district_farming
+			}
+		}
+		# Replace two mining districts with farming district for non-machine empires that use food for alloy production
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_country_flag = non_lithoid_subspecies }
+					NOT = { has_authority = auth_machine_intelligence }
+					is_catalytic_empire = yes
+				}
+			}
+			while = {
+				count = 2
+				remove_district = district_mining
+				add_district = {
+					district_type = district_farming
+				}
+			}
+		}
+		# And machine empires swap a generator district for another farming district
+		if = {
+			limit = {
+				owner = {
+					has_authority = auth_machine_intelligence
+					is_catalytic_empire = yes
+				}
+			}
+			remove_district = district_mining
+			add_district = {
+				district_type = district_farming
+			}
+			remove_district = district_generator
+			add_district = {
+				district_type = district_farming
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			is_planet_class = pc_shattered_ring_habitable
+		}
+		
+		add_deposit = d_segment_rubble_1
+		add_deposit = d_segment_rubble_2
+		add_deposit = d_segment_rubble_3
+		add_deposit = d_segment_rubble_4
+		add_deposit = d_decrepit_tunnels_1
+		add_deposit = d_decrepit_tunnels_2
+		add_deposit = d_decrepit_tunnels_3
+
+		if = {
+			limit = {
+				owner = {
+					has_civic = civic_machine_servitor
+				}
+			}
+			add_deposit = d_unsupervised_settlement
+		}
+
+		else_if = {
+			limit = {
+				owner = {
+					has_authority = auth_hive_mind
+				}
+			}
+			add_deposit = d_collapsed_burrows
+		}
+
+		else = {
+			add_deposit = d_decrepit_dwellings
+		}
+	
+		if = {
+			limit = {
+				owner = {
+					is_lithoid_empire = yes
+					NOT = {
+						has_valid_civic = civic_hive_devouring_swarm
+					}
+				}
+			}
+			while = {
+				count = 4
+				add_deposit = d_hibernating_lithoids
+			}
+		}
+	
+		if = {
+			limit = {
+				owner = {
+					is_lithoid_empire = yes
+					has_valid_civic = civic_hive_devouring_swarm
+				}
+			}
+			while = {
+				count = 2
+				add_deposit = d_hibernating_lithoids
+			}
+		}
+
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						has_valid_civic = civic_machine_assimilator
+						has_valid_civic = civic_machine_servitor
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					owner = {
+						last_created_species = { is_lithoid = yes }
+					}
+				}
+				owner = {
+					set_country_flag = lithoid_subspecies
+				}
+			}
+			else = {
+				owner = {
+					set_country_flag = non_lithoid_subspecies
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				owner = { is_regular_empire = yes }
+			}
+
+			# total - 24 jobs
+
+			# 3 jobs
+			add_district = {
+				district_type = district_city
+			}
+
+			if = {
+				limit = {
+					owner = { NOT = { has_valid_civic = civic_agrarian_idyll } }
+				}
+				while = {
+					count = 2
+					add_district = {
+						district_type = district_city
+					}
+				}
+			}
+			else = {
+				while = {
+					count = 2 
+					add_district = {
+						district_type = district_farming_uncapped
+					}
+				}
+			}
+
+			if = {
+				limit = { owner = { is_megacorp = yes } }
+				add_district = {
+					district_type = district_city
+				}
+			}
+
+			# 4 - 6 jobs
+			if = {
+				limit = {
+					owner = {
+						OR = {
+							is_lithoid_empire = no
+							has_country_flag = non_lithoid_subspecies
+						}
+					}
+				}
+				while = {
+					count = 2
+					add_district = {
+						district_type = district_farming_uncapped
+					}
+				}
+				if = {
+					limit = {
+						owner = { has_origin = origin_default }
+					}
+					add_district = {
+						district_type = district_farming_uncapped
+					}
+				}
+			}
+			else = {
+				while = {
+					count = 2
+					add_district = {
+						district_type = district_mining_uncapped
+					}
+				}
+			}
+
+			# 4 jobs
+			while = {
+				count = 2
+				add_district = {
+					district_type = district_mining_uncapped
+				}
+			}
+
+			# 2 jobs
+			add_district = {
+				district_type = district_srw_commercial
+			}
+
+			# 4 jobs
+			add_district = {
+				district_type = district_mining_uncapped
+			}
+			add_district = {
+				district_type = district_srw_commercial
+			}
+
+			# 2 jobs
+			if = {
+				limit = { owner = { is_megacorp = no } }
+				add_district = {
+					district_type = district_srw_commercial
+				}
+			}
+
+			# 3 jobs
+			add_building = building_capital
+
+			# 2 jobs
+			add_building = building_bureaucratic_1
+
+			# 2 jobs
+			if = {
+				limit = {
+					owner = {
+						has_valid_civic = civic_reanimated_armies
+					}
+				}
+				add_building = building_dread_encampment
+			}
+			else = {
+				add_building = building_research_lab_1
+			}
+
+			# 4-5 jobs
+			if = {
+				limit = {
+					owner = {
+						NOT = { has_valid_civic = civic_agrarian_idyll }
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							is_spiritualist = no
+							has_valid_civic = civic_pleasure_seekers
+						}
+					}
+					add_building = building_holo_theatres
+					add_district = {
+						district_type = district_srw_commercial
+					}
+				}
+				else_if = {
+					limit = {
+						owner = {
+							is_spiritualist = yes
+							has_valid_civic = civic_death_cult
+						}
+					}
+					add_building = building_sacrificial_temple_1
+					add_district = {
+						district_type = district_srw_commercial
+					}
+				}
+				else_if = {
+					limit = {
+						owner = {
+							is_megacorp = no
+							is_spiritualist = yes
+						}
+					}
+					add_building = building_temple
+					add_district = {
+						district_type = district_srw_commercial
+					}
+				}
+				else = {
+					add_building = building_commercial_zone
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				owner = { is_hive_empire = yes }
+			}
+
+			# 9 jobs
+			while = {
+				count = 3
+				add_district = {
+					district_type = district_hive
+				}
+			}
+
+			# 6-9 jobs
+			if = {
+				limit = {
+					owner = { is_lithoid_empire = no }
+				}
+				while = {
+					count = 2
+					add_district = {
+						district_type = district_farming_uncapped
+					}
+				}
+			}
+			else = {
+				while = {
+					count = 2
+					add_district = {
+						district_type = district_mining_uncapped
+					}
+				}
+			}
+
+			# 6 jobs
+			while = {
+				count = 2
+				add_district = {
+					district_type = district_mining_uncapped
+				}
+			}
+
+			# 6 jobs
+			while = {
+				count = 2
+				add_district = {
+					district_type = district_generator_uncapped
+				}
+			}
+
+			# 2 jobs
+			add_district = {
+				district_type = district_mining_uncapped
+			}
+
+			# 5 jobs
+			add_building = building_hive_capital
+
+			# 2 jobs
+			add_building = building_research_lab_1
+
+			# 2 jobs
+			add_building = building_hive_node
+
+			# 1 job
+			add_building = building_spawning_pool
+		}
+
+		# Replace capital building for machine empires
+		if = {
+			limit = { owner = { is_machine_empire = yes } }
+
+			# total - 27 jobs
+
+			# 3 jobs
+			while = {
+				count = 2
+				add_district = {
+					district_type = district_nexus
+				}
+			}
+
+			# 2 jobs
+			add_district = {
+				district_type = district_mining_uncapped
+			}
+
+			# 6 jobs
+			add_building = building_machine_capital
+
+			# 1 job
+			add_building = building_machine_assembly_plant
+
+			# 2 job
+			add_building = building_uplink_node
+
+			# 2 jobs
+			add_building = building_research_lab_1
+
+			# 4 jobs
+			add_district = {
+				district_type = district_mining_uncapped
+			}
+
+			# 8 jobs
+			while = {
+				count = 4
+				add_district = {
+					district_type = district_generator_uncapped
+				}
+			}
+
+			#Assimilators
+			if = {
+				limit = { owner = { has_civic = civic_machine_assimilator } }
+				remove_district = district_generator_uncapped
+				if = {
+					limit = { owner = { has_country_flag = lithoid_subspecies } }
+					add_district = {
+						district_type = district_mining_uncapped
+					}
+				}
+				else = {
+					add_district = {
+						district_type = district_farming_uncapped
+					}
+				}
+			}
+
+			#Servitors
+			if = {
+				limit = { owner = { has_civic = civic_machine_servitor } }
+				if = {
+					limit = { owner = { has_country_flag = lithoid_subspecies } }
+					add_district = {
+						district_type = district_mining_uncapped
+					}
+				}
+				else = {
+					add_district = {
+						district_type = district_farming_uncapped
+					}
+				}
+				add_district = {
+					district_type = district_nexus
+				}
+				add_building = building_organic_sanctuary
+			}
+		}
+	}
+}

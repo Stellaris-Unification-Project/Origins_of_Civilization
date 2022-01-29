@@ -1,0 +1,144 @@
+
+namespace = prim_orig_survey
+
+# Relic
+ship_event = {
+	id = prim_orig_survey.1
+	title = evt_primitive_remnants_surveyed
+	desc = {
+		trigger = {
+			owner = {
+				OR = {
+					has_country_flag = stone_age
+					has_country_flag = bronze_age
+					has_country_flag = late_medieval_age
+				}	
+			}
+		}
+		text = evt_primitive_remnants_surveyed_desc.early
+	}
+	desc = {
+		trigger = {
+			owner = {
+				OR = {
+					has_country_flag = renaissance_age
+					has_country_flag = steam_age
+					has_country_flag = industrial_age
+					has_country_flag = machine_age
+					has_country_flag = atomic_age
+					has_country_flag = early_space_age
+				}	
+			}
+		}
+		text = evt_primitive_remnants_surveyed_desc.late
+	}
+	desc = {
+		trigger = {
+			owner = {
+				has_country_flag = vbp_hive_id_stage
+			}
+		}
+		text = evt_primitive_remnants_surveyed_desc.hive.early
+	}
+	desc = {
+		trigger = {
+			owner = {
+				OR = {
+					has_country_flag = vbp_hive_ego_stage
+					has_country_flag = vbp_hive_superego_stage
+				}	
+			}
+		}
+		text = evt_primitive_remnants_surveyed_desc.hive.late
+	}
+	desc = {
+		trigger = {
+			owner = {
+				has_country_flag = vbp_primitive_robots
+			}
+		}
+		text = evt_primitive_remnants_surveyed_desc.mach
+	}
+	picture = GFX_evt_relic_world
+	location = from
+	show_sound = event_primitive_civilization
+	is_triggered_only = yes
+	trigger = {
+		from = {
+			exists = owner
+			owner = {
+				is_primitive = yes
+				has_country_flag = remnant_primitives
+			}
+		}
+	}
+
+	option = {
+		name = INTERESTING
+	}
+}
+
+# Lost Colony
+ship_event = {
+	id = prim_orig_survey.2
+	title = evt_primitive_colonists_surveyed
+	desc = {
+		trigger = {
+			owner = {
+				has_country_flag = mpo_stranded_colonists_1
+			}
+		}
+		text = evt_primitive_colonists_surveyed_desc.early
+	}
+	desc = {
+		trigger = {
+			owner = {
+				has_country_flag = mpo_stranded_colonists_2
+			}
+		}
+		text = evt_primitive_colonists_surveyed_desc.late
+	}
+	picture = GFX_evt_medieval_alien_civilization
+	location = from
+	show_sound = event_primitive_civilization
+	is_triggered_only = yes
+	trigger = {
+		from = {
+			exists = owner
+			owner = {
+				is_primitive = yes
+				OR = {
+					has_country_flag = mpo_stranded_colonists_1
+					has_country_flag = mpo_stranded_colonists_2
+				}
+			}
+		}
+	}
+
+	option = {
+		name = INTERESTING
+	}
+}
+
+# Abandoned Clones
+ship_event = {
+	id = prim_orig_survey.3
+	title = evt_abandoned_clones_surveyed
+	desc = evt_abandoned_clones_surveyed_desc
+	picture = GFX_evt_metropolis
+	location = from
+	show_sound = event_primitive_civilization
+	is_triggered_only = yes
+	trigger = {
+		from = {
+			exists = owner
+			owner = {
+				is_country_type = abandoned_clone_army
+			}
+		}
+	}
+
+	option = {
+		name = INTERESTING
+	}
+}
