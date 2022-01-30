@@ -68,10 +68,10 @@ can_orbital_bombard = {
 		AND = {
     	    from.controller = {
     	        is_country_type = faction
-    	        NOT = { is_same_value = root.owner }
+    	        NOT = { is_same_empire = root.owner }
     	    }
     	    from.owner = {
-    	        is_same_value = root.owner
+    	        is_same_empire = root.owner
     	    }
 		}
 	}
@@ -119,13 +119,13 @@ can_take_hostile_actions = {
 			has_country_flag = mpo_attack_spacefarers
 			OR = {
 				any_owned_fleet = {
-					exists = solar_system.space_owner
+					has_owner = yes
 					solar_system.space_owner = {
 						is_same_value = ROOT
 					}
 				}
 				any_owned_planet = {
-					exists = solar_system.space_owner
+					has_owner = yes
 					solar_system.space_owner = {
 						is_same_value = ROOT
 					}

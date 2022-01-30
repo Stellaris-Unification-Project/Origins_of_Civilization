@@ -18,11 +18,7 @@ give_colonists_infrastructure = {
 			exists = owner
 			owner = { has_country_flag = mpo_stranded_colonists_1 }
 		}
-		NOR = {
-			has_valid_civic = civic_machine_terminator
-			has_valid_civic = civic_fanatic_purifiers
-			has_valid_civic = civic_hive_devouring_swarm
-		}
+		is_homicidal = no
 	}
 
 	valid = {
@@ -34,11 +30,7 @@ give_colonists_infrastructure = {
 				owner = { NOT = { has_ethic = ethic_fanatic_xenophobe } }
 			}
 		}
-		NOR = {
-			has_valid_civic = civic_fanatic_purifiers
-			has_valid_civic = civic_hive_devouring_swarm
-			has_valid_civic = civic_machine_terminator
-		}
+		is_homicidal = no
 	}
 
 	ai_weight = {
@@ -221,11 +213,7 @@ appropriate_clone_army = {
 				is_country_type = abandoned_clone_army
 			}
 		}
-		NOR = {
-			has_valid_civic = civic_fanatic_purifiers
-			has_valid_civic = civic_hive_devouring_swarm
-			has_valid_civic = civic_machine_terminator
-		}
+		is_homicidal = no
 	}
 	
 	ai_weight = {

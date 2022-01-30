@@ -277,7 +277,7 @@ country_event = {
 				else_if = {
 					limit = {
 						starbase = {
-							NOT = { owner = { is_same_value = root } }
+							NOT = { is_owned_by = root }
 						}
 					}	
 					starbase = {
@@ -427,11 +427,7 @@ country_event = {
 	option = {
 		name = primitive.180.a # Cede
 		trigger = {
-			NOR = {
-				has_valid_civic = civic_machine_terminator
-				has_valid_civic = civic_hive_devouring_swarm
-				has_valid_civic = civic_fanatic_purifiers
-			}
+			is_homicidal = no
 		}
 
 		if = {
@@ -462,11 +458,7 @@ country_event = {
 	option = {
 		name = primitive.180.b # Don't cede
 		trigger = {
-			NOR = {
-				has_valid_civic = civic_machine_terminator
-				has_valid_civic = civic_hive_devouring_swarm
-				has_valid_civic = civic_fanatic_purifiers
-			}
+			is_homicidal = no
 		}
 
 		if = {
@@ -583,8 +575,7 @@ planet_event = {
 									factor = 0 # won't turn planet uninhabitable if it's not a planet
 									root = {
 										OR = {
-											is_planet_class = pc_ringworld_habitable
-											is_planet_class = pc_habitat
+											is_artificial = yes
 										}
 									}
 								}
@@ -597,8 +588,7 @@ planet_event = {
 									NAND = {
 										root = {
 											OR = {
-												is_planet_class = pc_ringworld_habitable
-												is_planet_class = pc_habitat
+												is_artificial = yes
 											}
 										}
 										host_has_dlc = Apocalypse
@@ -617,8 +607,7 @@ planet_event = {
 									factor = 0 # won't turn planet uninhabitable if it's not a planet
 									root = {
 										OR = {
-											is_planet_class = pc_ringworld_habitable
-											is_planet_class = pc_habitat
+											is_artificial = yes
 										}
 									}
 								}
@@ -631,8 +620,7 @@ planet_event = {
 									NAND = {
 										root = {
 											OR = {
-												is_planet_class = pc_ringworld_habitable
-												is_planet_class = pc_habitat
+												is_artificial = yes
 											}
 										}
 										host_has_dlc = Apocalypse

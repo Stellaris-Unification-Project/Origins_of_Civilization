@@ -153,7 +153,7 @@ country_event = {
 				else_if = {
 					limit = {
 						starbase = {
-							NOT = { owner = { is_same_value = root } }
+							NOT = { is_owned_by = root }
 						}								
 					}	
 					starbase = {

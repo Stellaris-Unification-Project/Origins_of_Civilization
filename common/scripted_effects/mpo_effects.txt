@@ -2459,8 +2459,10 @@ generate_space_age_buildings_and_districts = {
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_country_flag = non_lithoid_subspecies }
-					NOT = { has_authority = auth_machine_intelligence }
+					NOR = {
+						has_country_flag = non_lithoid_subspecies
+						has_authority = auth_machine_intelligence
+					}
 					is_catalytic_empire = yes
 				}
 			}

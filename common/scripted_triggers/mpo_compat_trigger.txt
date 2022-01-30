@@ -14,7 +14,7 @@ has_diagraphers_trait_mod = {
 }
 
 has_extra_origins_mod = {
-	NOT = { does_not_have_extra_origins = yes }
+	does_not_have_extra_origins = no
 }
 
 has_more_default_origins = {

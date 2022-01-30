@@ -2254,8 +2254,10 @@ country_event = {
 
 	trigger = {
 		is_country_type = primitive
-		NOT = { has_country_flag = stone_age }
-		NOT = { has_origin = origin_scion }
+		NOR = {
+			has_country_flag = stone_age
+			has_origin = origin_scion
+		}
 		has_necroids = yes
 		NOT = {
 			capital_scope = {
@@ -3482,7 +3484,7 @@ country_event = {
 			solar_system = {
 				if = {
 					limit = {
-						starbase = { owner = { is_same_value = root } }
+						starbase = { is_owned_by = root }
 					}
 					starbase = {
 						set_owner = event_target:primitive_country
@@ -3491,7 +3493,7 @@ country_event = {
 				every_system_planet = {
 					limit = {
 						exists = owner
-						owner = { is_same_value = root }
+						is_owned_by = root
 					}
 					set_owner = event_target:primitive_country			
 				}
@@ -4273,7 +4275,7 @@ country_event = {
 								}								
 							}
 							IF = {
-								limit = { exists = solar_system.space_owner }
+								limit = { has_owner = yes }
 								solar_system = {
 									IF = {
 										limit = {
@@ -5315,7 +5317,7 @@ country_event = {
 			solar_system = {
 				if = {
 					limit = {
-						starbase = { owner = { is_same_value = root } }
+						starbase = { is_owned_by = root }
 					}
 					starbase = {
 						set_owner = event_target:primitive_country
@@ -5328,7 +5330,7 @@ country_event = {
 				every_system_planet = {
 					limit = {
 						exists = owner
-						owner = { is_same_value = root }
+						is_owned_by = root
 					}
 					set_owner = event_target:primitive_country
 				}
